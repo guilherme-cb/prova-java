@@ -16,6 +16,8 @@ public class Funcionario{
     //declaração dos atributos sugeridos pelo Alex
     private double horasExtras;
     private double dinheiroVendas;
+    private double salarioFuncionario;
+
     private Scanner sc = new Scanner(System.in);
 
     //Construtor da classe:
@@ -114,5 +116,11 @@ public class Funcionario{
     }
     public void setDinheiroVendas(double dinheiroVendas){
         this.dinheiroVendas = dinheiroVendas;
+    }
+    public double getSalarioFuncionario() {
+        return salarioFuncionario;
+    }
+    public void setSalarioFuncionario(double salarioFuncionario) {
+        this.salarioFuncionario = salarioFuncionario;
     }
 }
