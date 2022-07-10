@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public class Trabalho {
     //Modificações por Gui:
-    private double pagamentoGeral;
     private Funcionario funcionario;
     private Departamento departamento;
     private double salarioMinimo;
@@ -15,8 +14,13 @@ public class Trabalho {
         int tipoFuncionario = sc.nextInt();
         
         funcionario = new Funcionario(tipoFuncionario);
-        
+        TrabalharMes(funcionario);
+
         departamento = new Departamento(tipoFuncionario);
+        if (tipoFuncionario != 3) {
+            //Ajustando o valor do funcionário do departamento caso o primeiro não seja já o responsável pelo departamento...
+            TrabalharMes(departamento.getResponsavel());
+        }
     }
 
     public void TrabalharMes(Funcionario trabalhador){ // a operação pode simplesmente pegar as horas trabalhadas e dinheiro vendido através dos métodos getters e setters desse trabalhador
@@ -49,5 +53,17 @@ public class Trabalho {
     public void funcionarioSupervisor(Funcionario trabalhador){
         double aux = salarioMinimo + (50 * funcionario.getHorasExtras()) + 500;
         funcionario.setSalarioFuncionario(aux);
+    }
+
+    public int getTipoFuncionario(){
+        return funcionario.getTipoFuncionario();
+    }
+
+    public double getSalarioFuncionario(){
+        return funcionario.getSalarioFuncionario();
+    }
+
+    public double getSalarioResponsavel(){
+        return departamento.getSalarioResponsavel();
     }
 }

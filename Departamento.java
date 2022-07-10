@@ -45,4 +45,10 @@ public class Departamento {
     public void setResponsavel(Funcionario responsavel){
         this.responsavel = responsavel;
     }
+    public double getSalarioResponsavel(){
+        return this.responsavel.getSalarioFuncionario();
+    }
+    public void setSalarioResponsavel(double salario){
+        this.responsavel.setSalarioFuncionario(salario);
+    }
 }
