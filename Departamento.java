@@ -51,4 +51,7 @@ public class Departamento {
     public void setSalarioResponsavel(double salario){
         this.responsavel.setSalarioFuncionario(salario);
     }
+    public String getNomeResponsavel(){
+        return responsavel.getNome();
+    }
 }

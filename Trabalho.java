@@ -66,4 +66,26 @@ public class Trabalho {
     public double getSalarioResponsavel(){
         return departamento.getSalarioResponsavel();
     }
+
+    public String getNomeFuncionario(){
+        return funcionario.getNome();
+    }
+
+    public String getNomeResponsavel(){
+        return departamento.getNomeResponsavel();
+    }
+
+    public void setFuncionarioNull(){
+        funcionario = null;
+    }
+
+    public void setResponsavelNull(){
+        departamento.setResponsavel(null);
+    }
+    public Departamento getDepartamento(){
+        return this.departamento;
+    }
+    public Funcionario getFuncionario(){
+        return this.funcionario;
+    }
 }

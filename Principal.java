@@ -2,6 +2,7 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 public class Principal {
+    static int contador = 0;
     public static void main(String[] args) throws ParseException {
         double salarioMinimo, salarioTotal = 0;
         Scanner sc = new Scanner(System.in);
@@ -24,6 +25,19 @@ public class Principal {
                 salarioTotal += trabalho.getSalarioFuncionario();
             } else {
                 salarioTotal += trabalho.getSalarioFuncionario() + trabalho.getSalarioResponsavel();
+            }
+        }
+    }
+
+    public void demitirFuncionario(Trabalho[] vetor, String buscador){
+        for (Trabalho trabalho : vetor) {
+            if (trabalho.getNomeFuncionario().equals(buscador)) {
+                trabalho.setFuncionarioNull();
+                contador++;
+            }
+            if (trabalho.getNomeResponsavel().equals(buscador)) {
+                trabalho.setResponsavelNull();
+                contador++;
             }
         }
     }

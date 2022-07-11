@@ -24,40 +24,37 @@ public class Funcionario{
     public Funcionario(int tipoFuncionario) throws ParseException {
         setTipoFuncionario(tipoFuncionario);
         System.out.println("\nQual o nome do(a) funcionário(a)?");
-        String nomeFuncionario = sc.nextLine();
-        setNome(nomeFuncionario);
+        setNome(sc.nextLine());
 
         System.out.println("\nQual o CPF do(a) funcionário(a)?");
-        String cPF = sc.next();
-        setCPF(cPF);
+        setCPF(sc.nextLine());
 
         System.out.println("\nQual o telefone do(a) funcionário(a)?");
-        String telefone = sc.next();
-        setTelefone(telefone);
+        setTelefone(sc.next());
 
         System.out.println("\nQual o gênero do(a) funcionário(a)? (M|F)");
-        char genero = sc.next().charAt(0);
-        setGenero(genero);
+        setGenero(sc.next().charAt(0));
 
         System.out.println("\nQual a data de admissão do(a) funcionário(a)? (dd/MM/yyyy)");
         String data = sc.next();
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        Date dataAux = formato.parse(data);
-        setDataAdmissao(dataAux);
+        setDataAdmissao(formato.parse(data));
 
         System.out.println("\nQual a rua do(a) funcionário(a)?");
         sc.nextLine();
-        String endereco = sc.nextLine();
-        setEndereco(endereco);
+        setEndereco(sc.nextLine());
 
         System.out.println("\nQual a quantidade de horas extras trabalhadas pelo(a) funcionário(a)?");
-        double horasExtras = sc.nextDouble();
-        setHorasExtras(horasExtras);
+        setHorasExtras(sc.nextDouble());
 
-        if (getTipoFuncionario() == '1') {
+        if (getTipoFuncionario() == 1) {
             System.out.println("\nQual o valor vendido no mês pelo funcionário(a)?");
             double dinheiroVendas = sc.nextDouble();
             setDinheiroVendas(dinheiroVendas);
+        } else {
+            System.out.println("\nQual a quantidade de horas extras trabalhadas pelo(a) funcionário(a)?");
+            double horasExtras = sc.nextDouble();
+            setHorasExtras(horasExtras);
         }
 }
 
