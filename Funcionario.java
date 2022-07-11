@@ -50,14 +50,16 @@ public class Funcionario{
         String endereco = sc.nextLine();
         setEndereco(endereco);
 
-        System.out.println("\nQual a quantidade de horas extras trabalhadas pelo(a) funcionário(a)?");
-        double horasExtras = sc.nextDouble();
-        setHorasExtras(horasExtras);
 
-        if (getTipoFuncionario() == '1') {
+        if (getTipoFuncionario() == 1) {
             System.out.println("\nQual o valor vendido no mês pelo funcionário(a)?");
             double dinheiroVendas = sc.nextDouble();
             setDinheiroVendas(dinheiroVendas);
+        } else {
+            System.out.println("\nQual a quantidade de horas extras trabalhadas pelo(a) funcionário(a)?");
+            double horasExtras = sc.nextDouble();
+            setHorasExtras(horasExtras);
+
         }
 }
 
