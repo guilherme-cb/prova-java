@@ -1,91 +1,72 @@
-import java.text.ParseException;
 import java.util.Scanner;
 
 public class Trabalho {
     //Modificações por Gui:
+    private double pagamentoGeral;
     private Funcionario funcionario;
-    private Departamento departamento;
     private double salarioMinimo;
     private Scanner sc = new Scanner(System.in);
 
-    public Trabalho(double salarioMinimo) throws ParseException {
+    public Trabalho(double salarioMinimo, Funcionario funcionario){
         this.salarioMinimo = salarioMinimo;
-        System.out.println("\nQual o cargo ocupado pelo(a) funcionário(a)? \n1-Vendedor(a) \t2-Não Vendedor(a) \t3-Supervisor(a)");
-        int tipoFuncionario = sc.nextInt();
-        
-        funcionario = new Funcionario(tipoFuncionario);
-        TrabalharMes(funcionario);
-
-        departamento = new Departamento(tipoFuncionario);
-        if (tipoFuncionario != 3) {
-            //Ajustando o valor do funcionário do departamento caso o primeiro não seja já o responsável pelo departamento...
-            TrabalharMes(departamento.getResponsavel());
-        }
+        this.funcionario = funcionario;
+        TrabalharMes(salarioMinimo, funcionario);
     }
 
-    public void TrabalharMes(Funcionario trabalhador){ // a operação pode simplesmente pegar as horas trabalhadas e dinheiro vendido através dos métodos getters e setters desse trabalhador
+    public double getPagamentoGeral() {
+        return pagamentoGeral;
+    }
+    public void setPagamentoGeral(double pagamentoGeral) {
+        this.pagamentoGeral = pagamentoGeral;
+    }
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+    public double getSalarioMinimo() {
+        return salarioMinimo;
+    }
+    public void setSalarioMinimo(double salarioMinimo) {
+        this.salarioMinimo = salarioMinimo;
+    }
+
+    public void TrabalharMes(double salarioMinimo, Funcionario trabalhador){
         if (trabalhador.getTipoFuncionario() == 1){
+            System.out.println("\nQual o valor vendido pelo(a) funcionário(a) " + trabalhador.getNome() + "?");
+            trabalhador.setDinheiroVendas(sc.nextDouble());
             funcionarioVendedor(trabalhador);
         } else if (trabalhador.getTipoFuncionario() == 2){
+            System.out.println("\nQual a quantidade de horas extras trabalhadas pelo(a) funcionário(a) " + trabalhador.getNome() + "?");
+            trabalhador.setHorasExtras(sc.nextInt());
             funcionarioNaoVendedor(trabalhador);
         } else if (trabalhador.getTipoFuncionario() == 3){
+            System.out.println("\nQual a quantidade de horas extras trabalhadas pelo(a) funcionário(a) " + trabalhador.getNome() + "?");
+            trabalhador.setHorasExtras(sc.nextInt());
             funcionarioSupervisor(trabalhador);
         } 
     }
 
     public void funcionarioVendedor(Funcionario trabalhador){
-        if (funcionario.getDinheiroVendas() <= 2000) {
-            funcionario.setSalarioFuncionario(salarioMinimo);
-        } else if(funcionario.getDinheiroVendas() >= 2001 && funcionario.getDinheiroVendas() <= 5000){
-            double aux = funcionario.getDinheiroVendas() + (funcionario.getDinheiroVendas() * 0.02);
-            funcionario.setDinheiroVendas(aux);
+        if (trabalhador.getDinheiroVendas() <= 2000) {
+            trabalhador.setSalarioFuncionario(salarioMinimo);
+        } else if(trabalhador.getDinheiroVendas() >= 2001 && trabalhador.getDinheiroVendas() <= 5000){
+            double aux = trabalhador.getDinheiroVendas() + (trabalhador.getDinheiroVendas() * 0.02);
+            trabalhador.setSalarioFuncionario(aux);
         } else {
-            double aux = funcionario.getDinheiroVendas() + (funcionario.getDinheiroVendas() * 0.03);
-            funcionario.setDinheiroVendas(aux);
+            double aux = trabalhador.getDinheiroVendas() + (trabalhador.getDinheiroVendas() * 0.03);
+            trabalhador.setSalarioFuncionario(aux);
         }
     }
 
     public void funcionarioNaoVendedor(Funcionario trabalhador){
-        double aux = salarioMinimo + (50 * funcionario.getHorasExtras());
-        funcionario.setSalarioFuncionario(aux);
+        double aux = (double) salarioMinimo + (50 * trabalhador.getHorasExtras());
+        trabalhador.setSalarioFuncionario(aux);
     }
 
     public void funcionarioSupervisor(Funcionario trabalhador){
-        double aux = salarioMinimo + (50 * funcionario.getHorasExtras()) + 500;
-        funcionario.setSalarioFuncionario(aux);
-    }
-
-    public int getTipoFuncionario(){
-        return funcionario.getTipoFuncionario();
-    }
-
-    public double getSalarioFuncionario(){
-        return funcionario.getSalarioFuncionario();
-    }
-
-    public double getSalarioResponsavel(){
-        return departamento.getSalarioResponsavel();
-    }
-
-    public String getNomeFuncionario(){
-        return funcionario.getNome();
-    }
-
-    public String getNomeResponsavel(){
-        return departamento.getNomeResponsavel();
-    }
-
-    public void setFuncionarioNull(){
-        funcionario = null;
-    }
-
-    public void setResponsavelNull(){
-        departamento.setResponsavel(null);
-    }
-    public Departamento getDepartamento(){
-        return this.departamento;
-    }
-    public Funcionario getFuncionario(){
-        return this.funcionario;
+        double aux = (double) salarioMinimo + (50 * funcionario.getHorasExtras()) + 500;
+        trabalhador.setSalarioFuncionario(aux);
     }
 }
