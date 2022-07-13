@@ -52,10 +52,10 @@ public class Trabalho {
         if (trabalhador.getDinheiroVendas() <= 2000) {
             trabalhador.setSalarioFuncionario(salarioMinimo);
         } else if(trabalhador.getDinheiroVendas() >= 2001 && trabalhador.getDinheiroVendas() <= 5000){
-            double aux = trabalhador.getDinheiroVendas() + (trabalhador.getDinheiroVendas() * 0.02);
+            double aux = salarioMinimo+ (trabalhador.getDinheiroVendas() * 0.02);
             trabalhador.setSalarioFuncionario(aux);
         } else {
-            double aux = trabalhador.getDinheiroVendas() + (trabalhador.getDinheiroVendas() * 0.03);
+            double aux = salarioMinimo + (trabalhador.getDinheiroVendas() * 0.03);
             trabalhador.setSalarioFuncionario(aux);
         }
     }
